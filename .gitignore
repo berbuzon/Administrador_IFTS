@@ -1,0 +1,10 @@
+echo "# Ignorar archivos de base de datos y backups
+*.sql
+*.zip
+*.rar
+*.7z
+*.bak
+/vendor/
+/node_modules/
+.env
+" > .gitignore
