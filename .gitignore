@@ -1,5 +1,4 @@
 echo "# Ignorar archivos de base de datos y backups
-*.sql
 *.zip
 *.rar
 *.7z
@@ -8,3 +7,9 @@ echo "# Ignorar archivos de base de datos y backups
 /node_modules/
 .env
 " > .gitignore
+
+# Bases de datos y backups
+*.sql
+*_dump.sql
+/db_backups/
+
