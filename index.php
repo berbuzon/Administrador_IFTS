@@ -1,53 +1,59 @@
+<?php
+include("conexion.php");
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $usuario = $_POST["usuario"];
+    $password = $_POST["password"];
+
+    // Buscamos el usuario en la tabla "usuarios"
+    $sql = "SELECT * FROM usuarios WHERE usuario = ?";
+    $stmt = $conexion->prepare($sql);
+    $stmt->bind_param("s", $usuario);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ($resultado->num_rows > 0) {
+        $fila = $resultado->fetch_assoc();
+
+        // Verificamos la contraseña
+        if (password_verify($password, $fila["password_hash"])) {
+            $_SESSION["usuario"] = $fila["usuario"];
+            header("Location: inicio.php");
+            exit();
+        } else {
+            $error = "Contraseña incorrecta";
+        }
+    } else {
+        $error = "Usuario no encontrado";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador Programa Adolescencia</title>
-    <link rel="stylesheet" href="assets/css/estilo.css">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
+<div class="login-container">
+    <h1>Administrador Adolescencia</h1>
+    <form action="" method="POST">
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario" required>
 
-<?php include('conexion.php'); ?>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
 
-<header>
-    <div class="container">
-        <h1>Administrador Programa Adolescencia</h1>
-        <nav>
-            <ul>
-                <li><a href="#" class="activo">Inicio</a></li>
-                <li><a href="#">Login</a></li>
-                <li><a href="#">Reportes</a></li>
-                <li><a href="#">Contactos</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+        <input type="submit" value="Ingresar">
+        <?php if (isset($error)) echo "<p class='error'>$error</p>"; ?>
+    </form>
 
-<main>
-    <aside>
-        <h2>Panel lateral</h2>
-        <ul>
-            <li><a href="#">Estado de conexión</a></li>
-            <li><a href="#">Gestión de usuarios</a></li>
-            <li><a href="#">Actividades</a></li>
-            <li><a href="#">Adolescentes</a></li>
-        </ul>
-    </aside>
-
-    <section>
-        <h2>Panel principal</h2>
-        <article>
-            <h3>Bienvenido al sistema</h3>
-            <p>El sistema de administración de actividades para adolescentes está conectado correctamente con la base de datos <strong>adl_admin_inscripcion</strong>.</p>
-            <p>Desde este panel podrás realizar las operaciones CRUD, visualizar reportes y administrar usuarios.</p>
-        </article>
-    </section>
-</main>
-
-<footer>
-    <p>© 2025 IFTS N°4 — TP Integrador (HTML + CSS + PHP) | Desarrollado sin frameworks</p>
-</footer>
-
+    <p style="text-align:center; margin-top:10px;">
+        <a href="crear_usuario.php">Crear nuevo usuario</a>
+    </p>
+</div>
 </body>
 </html>
