@@ -8,6 +8,8 @@ if (!isset($_SESSION["usuario"])) {
     exit();
 }
 
+$esAdmin = isset($_SESSION["rol"]) && $_SESSION["rol"] === "admin";
+
 // CONSULTA: adolescentes con estado = 2 (aceptados)
 $sql = "
 SELECT 
@@ -50,7 +52,9 @@ $resultado = $conexion->query($sql);
             <a href="/Administrador_IFTS/reportes/generar_pdf.php" class="boton">🧾 Exportar a PDF</a>
         </p>
 
-        <p><a href="/Administrador_IFTS/crud_adolescentes/alta.php" class="boton">➕ Agregar nuevo adolescente</a></p>
+        <?php if ($esAdmin): ?>
+            <p><a href="/Administrador_IFTS/crud_adolescentes/alta.php" class="boton">➕ Agregar nuevo adolescente</a></p>
+        <?php endif; ?>
 
         <table class="tabla-crud">
             <thead>
@@ -62,7 +66,9 @@ $resultado = $conexion->query($sql);
                     <th>Género</th>
                     <th>Fecha Nac.</th>
                     <th>Ingreso Programa</th>
-                    <th>Acciones</th>
+                    <?php if ($esAdmin): ?>
+                        <th>Acciones</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
@@ -76,16 +82,18 @@ $resultado = $conexion->query($sql);
                             <td><?php echo htmlspecialchars($fila["genero"]); ?></td>
                             <td><?php echo htmlspecialchars($fila["fecha_nacimiento"]); ?></td>
                             <td><?php echo htmlspecialchars($fila["ingreso_programa"]); ?></td>
-                            <td>
-                                <a class="accion editar" href="/Administrador_IFTS/crud_adolescentes/editar.php?id=<?php echo $fila['id_adolescente']; ?>">✏️ Editar</a> |
-                                <a class="accion eliminar" href="/Administrador_IFTS/crud_adolescentes/baja.php?id=<?php echo $fila['id_adolescente']; ?>"
-                                    onclick="return confirm('¿Dar de baja a este adolescente?');">⛔ Baja</a>
-                            </td>
+                            <?php if ($esAdmin): ?>
+                                <td>
+                                    <a class="accion editar" href="/Administrador_IFTS/crud_adolescentes/editar.php?id=<?php echo $fila['id_adolescente']; ?>">✏️ Editar</a> |
+                                    <a class="accion eliminar" href="/Administrador_IFTS/crud_adolescentes/baja.php?id=<?php echo $fila['id_adolescente']; ?>"
+                                        onclick="return confirm('¿Dar de baja a este adolescente?');">⛔ Baja</a>
+                                </td>
+                            <?php endif; ?>
                         </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="8">No se encontraron adolescentes activos (estado = 2)</td>
+                        <td colspan="<?php echo $esAdmin ? 8 : 7; ?>">No se encontraron adolescentes activos (estado = 2)</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
