@@ -19,6 +19,12 @@ $sql = "
 ";
 
 $resultado = $conexion->query($sql);
+
+if ($resultado === false) {
+    error_log("Error en la consulta SQL: " . $conexion->error);
+    echo "<div class='alert alert-danger'>Ocurrió un error al obtener los datos de actividades. Por favor, intente más tarde.</div>";
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
