@@ -35,6 +35,11 @@ $resultado = $conexion->query($sql);
     <main class="contenido">
         <h1>Listado de instituciones</h1>
 
+
+        <p style="text-align: right; margin-bottom: 15px;">
+            <a href="/Administrador_IFTS/reportes/generar_pdf_adolescentes.php" class="boton">🧾 Exportar a PDF</a>
+        </p>
+
         <?php if ($esAdmin): ?>
             <p><a href="/Administrador_IFTS/crud_instituciones/alta.php" class="boton">➕ Agregar nueva institución</a></p>
         <?php endif; ?>

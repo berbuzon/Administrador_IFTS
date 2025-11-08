@@ -492,3 +492,66 @@ footer {
 .boton-volver:hover {
   background-color: #999;
 }
+
+.vigente {
+  color: #008000; /* verde */
+  font-weight: bold;
+}
+
+.no-vigente {
+  color: #cc0000; /* rojo */
+  font-weight: bold;
+}
+
+.inactiva {
+  color: #999;
+  text-decoration: line-through;
+}
+
+<style>
+    .contenedor-graficos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        margin-top: 30px;
+    }
+
+    .grafico-box {
+        width: 85%;
+        max-width: 900px;
+        height: 420px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grafico-box h2 {
+        text-align: center;
+        color: #1d3557;
+        margin-bottom: 15px;
+        font-size: 1.2em;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    @media (max-width: 768px) {
+        .grafico-box {
+            width: 95%;
+            height: 350px;
+            padding: 10px;
+        }
+        .grafico-box h2 {
+            font-size: 1.05em;
+        }
+    }
+</style>

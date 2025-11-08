@@ -23,7 +23,7 @@ $mensaje = "";
 // Verificar existencia de la institución antes de actualizar
 require_once '../conexion.php'; // Asegúrate de que la conexión esté disponible
 
-$stmt = $conn->prepare("SELECT id FROM instituciones WHERE id = ?");
+$stmt = $conexion->prepare("SELECT id FROM instituciones WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();

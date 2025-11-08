@@ -10,7 +10,7 @@ if (!isset($_SESSION["usuario"])) {
 
 $esAdmin = isset($_SESSION["rol"]) && $_SESSION["rol"] === "admin";
 
-// CONSULTA: adolescentes con estado = 2 (aceptados)
+// CONSULTA: adolescentes con estado = 2 (aceptados) y = 1 (pendientes)
 $sql = "
 SELECT 
     a.id AS id_adolescente,
@@ -25,8 +25,8 @@ FROM adolescentes a
 INNER JOIN datos_personales dp ON dp.id = a.id_datos_personales
 INNER JOIN formularios f ON f.id_adolescente = a.id
 INNER JOIN formulario_oferta fo ON fo.formulario_id = f.id
-WHERE fo.estado = 2
-ORDER BY dp.apellido, dp.nombre
+WHERE fo.estado IN (1, 2)
+ORDER BY dp.id
 ";
 
 $resultado = $conexion->query($sql);
