@@ -19,6 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificamos la contraseña
         if (password_verify($password, $fila["password_hash"])) {
             $_SESSION["usuario"] = $fila["usuario"];
+            $_SESSION["rol"] = isset($fila["rol"]) ? $fila["rol"] : "usuario";
             header("Location: inicio.php");
             exit();
         } else {
