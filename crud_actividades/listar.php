@@ -34,6 +34,10 @@ $resultado = $conexion->query($sql);
 
     <main class="contenido">
         <h1>Listado de actividades</h1>
+        
+        <p style="text-align: right; margin-bottom: 15px;">
+            <a href="/Administrador_IFTS/reportes/generar_pdf_actividades.php" class="boton">🧾 Exportar a PDF</a>
+        </p>
 
         <?php if ($esAdmin): ?>
             <p><a href="/Administrador_IFTS/crud_actividades/alta.php" class="boton">➕ Agregar nueva actividad</a></p>

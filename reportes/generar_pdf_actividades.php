@@ -54,22 +54,25 @@ $pdf->SetFont('helvetica', '', 10);
 $registros_por_pagina = 300;
 $contador = 0;
 $html = '
-<table border="1" cellpadding="4">
+<table border="1" cellpadding="4" cellspacing="0" style="table-layout:fixed; width:277mm;">
 <thead>
 <tr style="background-color:#f2f2f2; font-weight:bold;">
-  <th style="width:10%;">#</th>
-  <th style="width:60%;">Nombre de la actividad</th>
-  <th style="width:30%;">Vigencia</th>
+  <th width="20mm" align="center">#</th>
+  <th width="197mm" align="left">Nombre de la actividad</th>
+  <th width="60mm" align="center">Vigencia</th>
 </tr>
 </thead><tbody>';
+
+
 
 while ($fila = $resultado->fetch_assoc()) {
     $contador++;
     $html .= '<tr>
-        <td>'.htmlspecialchars($fila["id"]).'</td>
-        <td>'.htmlspecialchars($fila["valor"]).'</td>
-        <td>'.htmlspecialchars($fila["vigente"]).'</td>
+        <td width="20mm" align="center">'.htmlspecialchars($fila["id"]).'</td>
+        <td width="197mm" align="left">'.htmlspecialchars($fila["valor"]).'</td>
+        <td width="60mm" align="center">'.htmlspecialchars($fila["vigente"]).'</td>
     </tr>';
+
 
     if ($contador % $registros_por_pagina == 0) {
         $html .= '</tbody></table>';
@@ -79,11 +82,12 @@ while ($fila = $resultado->fetch_assoc()) {
         <table border="1" cellpadding="4">
         <thead>
         <tr style="background-color:#f2f2f2; font-weight:bold;">
-          <th style="width:10%;">#</th>
-          <th style="width:60%;">Nombre de la actividad</th>
-          <th style="width:30%;">Vigencia</th>
+        <th width="20mm" align="center">#</th>
+        <th width="197mm" align="left">Nombre de la actividad</th>
+        <th width="60mm" align="center">Vigencia</th>
         </tr>
         </thead><tbody>';
+
     }
 }
 
