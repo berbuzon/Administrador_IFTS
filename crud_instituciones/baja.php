@@ -20,6 +20,22 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 $mensaje = "";
 
+// Verificar existencia de la institución antes de actualizar
+require_once '../conexion.php'; // Asegúrate de que la conexión esté disponible
+
+$stmt = $conn->prepare("SELECT id FROM instituciones WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    $mensaje = "Institución no encontrada. No se realizó ninguna actualización.";
+    // Aquí puedes mostrar el mensaje o redirigir según tu lógica
+    echo $mensaje;
+    exit();
+}
+$stmt->close();
+
 $sql = "UPDATE adl_admin_inscripcion.instituciones SET vigente = 0 WHERE id = ?";
 $stmt = $conexion->prepare($sql);
 $stmt->bind_param("i", $id);
