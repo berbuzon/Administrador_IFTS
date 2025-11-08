@@ -49,7 +49,7 @@ $resultado = $conexion->query($sql);
         <h1>Listado de adolescentes activos</h1>
 
         <p style="text-align: right; margin-bottom: 15px;">
-            <a href="/Administrador_IFTS/reportes/generar_pdf.php" class="boton">🧾 Exportar a PDF</a>
+            <a href="/Administrador_IFTS/reportes/generar_pdf_adolescentes.php" class="boton">🧾 Exportar a PDF</a>
         </p>
 
         <?php if ($esAdmin): ?>

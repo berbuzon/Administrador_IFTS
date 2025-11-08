@@ -1,0 +1,144 @@
+/* Layout general */
+body {
+  margin: 0;
+  font-family: "Figtree", sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Menú lateral */
+.sidebar {
+  width: 240px;
+  background-color: #fff7cc;
+  border-right: 1px solid #e2e8f0;
+  padding: 1rem;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sidebar-header h2 {
+  font-size: 1rem;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 0.5rem;
+  color: #374151;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.menu li:hover {
+  background-color: #fde68a;
+  color: #1d4ed8;
+}
+
+.menu i {
+  width: 20px;
+  text-align: center;
+}
+
+/* Contenido principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Barra superior */
+.topbar {
+  background-color: #2563eb;
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.topbar p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Contenido */
+.content {
+  padding: 2rem;
+}
+
+.content h2 {
+  color: #1d4ed8;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: #f1f5f9;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+td {
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Íconos */
+.acciones i {
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 1rem;
+}
+
+.acciones i:hover {
+  color: #2563eb;
+}
