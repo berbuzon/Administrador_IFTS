@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $institucion) {
     <?php if ($institucion): ?>
         <form action="" method="POST" class="form-crud">
             <label>Nombre de la institución:</label>
-            <input type="text" name="valor" value="<?php echo htmlspecialchars($institucion['valor']); ?>" required>
+            <input type="text" name="valor" value="<?php echo htmlspecialchars($institucion['valor']); ?>" required maxlength="100">
 
             <label>Vigencia:</label>
             <select name="vigente">
