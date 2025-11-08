@@ -42,7 +42,7 @@ if ($resultado === false) {
         <h1>Listado de actividades</h1>
 
         <p style="text-align: right; margin-bottom: 15px;">
-            <a href="/Administrador_IFTS/reportes/generar_pdf.php" class="boton">🧾 Exportar a PDF</a>
+            <a href="/Administrador_IFTS/reportes/generar_pdf_actividades.php" class="boton">🧾 Exportar a PDF</a>
         </p>
 
         <?php if ($esAdmin): ?>
