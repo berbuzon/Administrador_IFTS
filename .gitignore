@@ -12,4 +12,5 @@ echo "# Ignorar archivos de base de datos y backups
 *.sql
 *_dump.sql
 /db_backups/
+/copias/
 
