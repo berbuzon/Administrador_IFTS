@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador Adolescencia - Actividades</title>
+  <link rel="stylesheet" href="actividades.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Menú lateral -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h2>Menú</h2>
+      </div>
+      <ul class="menu">
+        <li><i class="fa-solid fa-house"></i> Inicio</li>
+        <li><i class="fa-solid fa-building"></i> Instituciones</li>
+        <li><i class="fa-solid fa-location-dot"></i> Sedes</li>
+        <li><i class="fa-solid fa-users-gear"></i> Talleres</li>
+        <li><i class="fa-solid fa-list"></i> Actividades</li>
+        <li><i class="fa-solid fa-person"></i> Cupos</li>
+        <li><i class="fa-solid fa-user-plus"></i> Inscribir Adolescente</li>
+        <li><i class="fa-solid fa-magnifying-glass"></i> Búsqueda</li>
+        <li><i class="fa-solid fa-chart-column"></i> Reportes y listados</li>
+      </ul>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <!-- Barra superior -->
+      <header class="topbar">
+        <div>
+          <h1>Administrador Adolescencia</h1>
+          <p>EliezerBG — beliezer@buenosaires.gob.ar</p>
+        </div>
+      </header>
+
+      <!-- Tabla principal -->
+      <section class="content">
+        <h2>Listado de Actividades</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre de la Actividad</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Básquet</td>
+              <td class="acciones"><i class="fa-solid fa-pen"></i></td>
+              <td class="acciones"><i class="fa-solid fa-trash"></i></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Vóley</td>
+              <td class="acciones"><i class="fa-solid fa-pen"></i></td>
+              <td class="acciones"><i class="fa-solid fa-trash"></i></td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Danza contemporánea</td>
+              <td class="acciones"><i class="fa-solid fa-pen"></i></td>
+              <td class="acciones"><i class="fa-solid fa-trash"></i></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+
+.content h2 {
+  color: #1d4ed8;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+/* Tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: #f1f5f9;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+td {
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Íconos */
+.acciones i {
+  color: #64748b;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-size: 1rem;
+}
+
+.acciones i:hover {
+  color: #2563eb;
+}
