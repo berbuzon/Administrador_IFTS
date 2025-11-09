@@ -2,7 +2,7 @@
 $host = "localhost";
 $usuario = "root";
 $contrasena = "";
-$base_datos = "adl_admin_inscripcion";
+$base_datos = "adl_admin_inscripcion_backup";
 $port = 3307;
 
 $conexion = new mysqli($host, $usuario, $contrasena, $base_datos, $port);
