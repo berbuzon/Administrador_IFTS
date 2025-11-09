@@ -29,7 +29,7 @@ INNER JOIN formularios f ON f.id_adolescente = a.id
 INNER JOIN formulario_oferta fo ON fo.formulario_id = f.id
 WHERE fo.estado = 2
 ORDER BY dp.apellido, dp.nombre
-limit 10
+limit 500
 ";
 $resultado = $conexion->query($sql);
 

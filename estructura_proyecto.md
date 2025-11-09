@@ -269,8 +269,10 @@ Administrador_IFTS/
 │   └── anonimizar_datos_personales.php
 │   └── conexion.php
 │   └── crear_usuario.php
+│   └── duplicar_bbdd.php
 │   └── index.php
 │   └── inicio.php
+│   └── limpiar_bbdd.php
 │   └── login.php
 │   └── logout.php
 ```
