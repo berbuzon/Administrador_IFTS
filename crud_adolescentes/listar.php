@@ -36,7 +36,7 @@ $resultado = $conexion->query($sql);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Listado de Adolescentes Activos</title>
+    <title>Adolescentes Inscriptos</title>
     <link rel="stylesheet" href="/Administrador_IFTS/assets/css/estilo.css">
 </head>
 
@@ -84,9 +84,8 @@ $resultado = $conexion->query($sql);
                             <td><?php echo htmlspecialchars($fila["ingreso_programa"]); ?></td>
                             <?php if ($esAdmin): ?>
                                 <td>
-                                    <a class="accion editar" href="/Administrador_IFTS/crud_adolescentes/editar.php?id=<?php echo $fila['id_adolescente']; ?>">✏️ Editar</a> |
-                                    <a class="accion eliminar" href="/Administrador_IFTS/crud_adolescentes/baja.php?id=<?php echo $fila['id_adolescente']; ?>"
-                                        onclick="return confirm('¿Dar de baja a este adolescente?');">⛔ Baja</a>
+                                <a class="accion editar" href="/Administrador_IFTS/crud_adolescentes/editar.php?id=<?php echo $fila['id_adolescente']; ?>">✏️ Editar</a> |
+                                <a class="accion eliminar" href="/Administrador_IFTS/crud_adolescentes/baja.php?id=<?php echo $fila['id_adolescente']; ?>" onclick="return confirm('¿Dar de baja a este adolescente?');">⛔ Baja</a>
                                 </td>
                             <?php endif; ?>
                         </tr>

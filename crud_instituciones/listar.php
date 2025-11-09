@@ -61,7 +61,9 @@ $resultado = $conexion->query($sql);
                         <tr>
                             <td><?php echo $fila['id']; ?></td>
                             <td><?php echo htmlspecialchars($fila['valor']); ?></td>
-                            <td><?php echo $fila['vigente'] ? 'Vigente' : 'No vigente'; ?></td>
+                            <td class="<?php echo $fila['vigente'] ? 'vigente' : 'no-vigente'; ?>">
+                            <?php echo $fila['vigente'] ? 'Vigente' : 'No vigente'; ?>
+                            </td>
                             <?php if ($esAdmin): ?>
                                 <td>
                                     <a class="accion editar" href="/Administrador_IFTS/crud_instituciones/editar.php?id=<?php echo $fila['id']; ?>">✏️ Editar</a> |
