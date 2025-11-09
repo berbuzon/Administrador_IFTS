@@ -34,6 +34,7 @@ $resultado = $conexion->query($sql);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Adolescentes Inscriptos</title>
@@ -46,15 +47,18 @@ $resultado = $conexion->query($sql);
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/sidebar.php"); ?>
 
     <main class="contenido">
-        <h1>Listado de adolescentes activos</h1>
+        <h1>Listado de adolescentes</h1>
 
         <p style="text-align: right; margin-bottom: 15px;">
+            <?php if ($esAdmin): ?>
+                <a href="/Administrador_IFTS/crud_adolescentes/alta.php" class="boton">➕ Agregar nuevo adolescente</a>
+            <?php endif; ?>
             <a href="/Administrador_IFTS/reportes/generar_pdf_adolescentes.php" class="boton">🧾 Exportar a PDF</a>
+            <a href="/Administrador_IFTS/reportes/exportar_excel_adolescentes.php" class="boton" style="background-color: #107c41;">📊 Exportar a Excel</a>
         </p>
 
-        <?php if ($esAdmin): ?>
-            <p><a href="/Administrador_IFTS/crud_adolescentes/alta.php" class="boton">➕ Agregar nuevo adolescente</a></p>
-        <?php endif; ?>
+
+
 
         <table class="tabla-crud">
             <thead>
@@ -84,8 +88,8 @@ $resultado = $conexion->query($sql);
                             <td><?php echo htmlspecialchars($fila["ingreso_programa"]); ?></td>
                             <?php if ($esAdmin): ?>
                                 <td>
-                                <a class="accion editar" href="/Administrador_IFTS/crud_adolescentes/editar.php?id=<?php echo $fila['id_adolescente']; ?>">✏️ Editar</a> |
-                                <a class="accion eliminar" href="/Administrador_IFTS/crud_adolescentes/baja.php?id=<?php echo $fila['id_adolescente']; ?>" onclick="return confirm('¿Dar de baja a este adolescente?');">⛔ Baja</a>
+                                    <a class="accion editar" href="/Administrador_IFTS/crud_adolescentes/editar.php?id=<?php echo $fila['id_adolescente']; ?>">✏️ Editar</a> |
+                                    <a class="accion eliminar" href="/Administrador_IFTS/crud_adolescentes/baja.php?id=<?php echo $fila['id_adolescente']; ?>" onclick="return confirm('¿Dar de baja a este adolescente?');">⛔ Baja</a>
                                 </td>
                             <?php endif; ?>
                         </tr>
@@ -102,4 +106,5 @@ $resultado = $conexion->query($sql);
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/footer.php"); ?>
 
 </body>
+
 </html>

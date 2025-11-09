@@ -69,88 +69,54 @@ while ($fila = $res_institucion->fetch_assoc()) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Adolescentes</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Gráficos - Programa Adolescencia</title>
     <link rel="stylesheet" href="/Administrador_IFTS/assets/css/estilo.css">
-    <style>
-        .contenedor-graficos {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-            margin-top: 30px;
-        }
-
-        .grafico-box {
-            width: 85%;
-            max-width: 900px;
-            height: 420px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .grafico-box h2 {
-            text-align: center;
-            color: #1d3557;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        canvas {
-            width: 100% !important;
-            height: 100% !important;
-        }
-
-        @media (max-width: 768px) {
-            .grafico-box {
-                width: 95%;
-                height: 350px;
-                padding: 10px;
-            }
-            .grafico-box h2 {
-                font-size: 1.05em;
-            }
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/header.php"); ?>
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/sidebar.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/header.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/sidebar.php"); ?>
 
-<main class="contenido">
-    <h1>Reporte de Adolescentes</h1>
+    <main class="contenido">
+        <h1>Reportes del Programa Adolescencia</h1>
 
-    <div class="contenedor-graficos">
+        <!-- 🔹 Botones de exportación -->
+        <!-- <div class="botones-exportar" style="text-align:right; margin-bottom:15px;">
+            <button onclick="exportar('excel')" class="boton">📊 Exportar a Excel</button>
+            <button onclick="exportar('pdf')" class="boton">🧾 Exportar a PDF</button>
+        </div> -->
 
-        <div class="grafico-box">
-            <h2>Adolescentes por Actividad</h2>
-            <canvas id="chartActividades"></canvas>
+
+        <!-- 🔹 Contenedor general de gráficos -->
+        <div class="contenedor-graficos">
+
+            <div class="grafico-box">
+                <h2>Adolescentes por Actividad</h2>
+                <canvas id="chartActividades"></canvas>
+            </div>
+
+            <div class="grafico-box">
+                <h2>Adolescentes por Institución</h2>
+                <canvas id="chartInstituciones"></canvas>
+            </div>
+
+            <div class="grafico-box">
+                <h2>Distribución porcentual de adolescentes por Institución</h2>
+                <canvas id="chartInstitucionesDona"></canvas>
+            </div>
         </div>
 
-        <div class="grafico-box">
-            <h2>Adolescentes por Institución</h2>
-            <canvas id="chartInstituciones"></canvas>
-        </div>
+    </main>
 
-        <div class="grafico-box">
-            <h2>Distribución porcentual de adolescentes por Institución</h2>
-            <canvas id="chartInstitucionesDona"></canvas>
-        </div>
-
-    </div>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/footer.php"); ?>
 
     <script>
-        // === Gráfico 1: Actividades ===
+        /* === Gráfico 1: Actividades === */
         const ctxAct = document.getElementById('chartActividades');
         new Chart(ctxAct, {
             type: 'bar',
@@ -166,23 +132,36 @@ while ($fila = $res_institucion->fetch_assoc()) {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
+                    legend: {
+                        display: false
+                    },
                     title: {
                         display: true,
                         text: 'Top 10 actividades con más adolescentes'
                     }
                 },
-                layout: { padding: 20 },
+                layout: {
+                    padding: 20
+                },
                 scales: {
                     x: {
-                        ticks: { autoSkip: false, maxRotation: 45, minRotation: 30, font: { size: 10 } }
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 45,
+                            minRotation: 30,
+                            font: {
+                                size: 10
+                            }
+                        }
                     },
-                    y: { beginAtZero: true }
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
         });
 
-        // === Gráfico 2: Instituciones (barras) ===
+        /* === Gráfico 2: Instituciones === */
         const ctxInst = document.getElementById('chartInstituciones');
         new Chart(ctxInst, {
             type: 'bar',
@@ -198,23 +177,36 @@ while ($fila = $res_institucion->fetch_assoc()) {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: false },
+                    legend: {
+                        display: false
+                    },
                     title: {
                         display: true,
                         text: 'Top 10 instituciones con más adolescentes'
                     }
                 },
-                layout: { padding: 20 },
+                layout: {
+                    padding: 20
+                },
                 scales: {
                     x: {
-                        ticks: { autoSkip: false, maxRotation: 45, minRotation: 30, font: { size: 10 } }
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 45,
+                            minRotation: 30,
+                            font: {
+                                size: 10
+                            }
+                        }
                     },
-                    y: { beginAtZero: true }
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
         });
 
-        // === Gráfico 3: Instituciones (dona porcentual) ===
+        /* === Gráfico 3: Instituciones (dona porcentual) === */
         const ctxDona = document.getElementById('chartInstitucionesDona');
         new Chart(ctxDona, {
             type: 'doughnut',
@@ -236,7 +228,9 @@ while ($fila = $res_institucion->fetch_assoc()) {
                 plugins: {
                     legend: {
                         position: 'bottom',
-                        labels: { boxWidth: 15 }
+                        labels: {
+                            boxWidth: 15
+                        }
                     },
                     title: {
                         display: true,
@@ -246,8 +240,35 @@ while ($fila = $res_institucion->fetch_assoc()) {
             }
         });
     </script>
-</main>
+    <script>
+        function exportar(tipo) {
+            // Convertir los gráficos a imágenes Base64
+            const img1 = document.getElementById("chartActividades").toDataURL("image/png");
+            const img2 = document.getElementById("chartInstituciones").toDataURL("image/png");
+            const img3 = document.getElementById("chartInstitucionesDona").toDataURL("image/png");
 
-<?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/footer.php"); ?>
+            // Crear un formulario temporal para enviar las imágenes
+            const form = document.createElement("form");
+            form.method = "POST";
+            form.action = tipo === "excel" ?
+                "/Administrador_IFTS/reportes/exportar_excel_graficos.php" :
+                "/Administrador_IFTS/reportes/exportar_pdf_graficos.php";
+
+            // Agregar las imágenes como campos ocultos
+            [img1, img2, img3].forEach((img, i) => {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = "grafico" + (i + 1);
+                input.value = img;
+                form.appendChild(input);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+    </script>
+
 </body>
+
 </html>

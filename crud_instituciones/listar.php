@@ -23,11 +23,13 @@ $resultado = $conexion->query($sql);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Listado de Instituciones</title>
     <link rel="stylesheet" href="/Administrador_IFTS/assets/css/estilo.css">
 </head>
+
 <body>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/header.php"); ?>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/sidebar.php"); ?>
@@ -37,12 +39,14 @@ $resultado = $conexion->query($sql);
 
 
         <p style="text-align: right; margin-bottom: 15px;">
-            <a href="/Administrador_IFTS/reportes/generar_pdf_adolescentes.php" class="boton">🧾 Exportar a PDF</a>
+            <?php if ($esAdmin): ?>
+                <a href="/Administrador_IFTS/crud_instituciones/alta.php" class="boton">➕ Agregar nueva institución</a>
+            <?php endif; ?>
+            <a href="/Administrador_IFTS/reportes/generar_pdf_instituciones.php" class="boton">🧾 Exportar a PDF</a>
+            <a href="/Administrador_IFTS/reportes/exportar_excel_instituciones.php" class="boton excel">📊 Exportar a Excel</a>
         </p>
 
-        <?php if ($esAdmin): ?>
-            <p><a href="/Administrador_IFTS/crud_instituciones/alta.php" class="boton">➕ Agregar nueva institución</a></p>
-        <?php endif; ?>
+
 
         <table class="tabla-crud">
             <thead>
@@ -62,7 +66,7 @@ $resultado = $conexion->query($sql);
                             <td><?php echo $fila['id']; ?></td>
                             <td><?php echo htmlspecialchars($fila['valor']); ?></td>
                             <td class="<?php echo $fila['vigente'] ? 'vigente' : 'no-vigente'; ?>">
-                            <?php echo $fila['vigente'] ? 'Vigente' : 'No vigente'; ?>
+                                <?php echo $fila['vigente'] ? 'Vigente' : 'No vigente'; ?>
                             </td>
                             <?php if ($esAdmin): ?>
                                 <td>
@@ -83,4 +87,5 @@ $resultado = $conexion->query($sql);
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/footer.php"); ?>
 </body>
+
 </html>

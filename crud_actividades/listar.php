@@ -23,25 +23,27 @@ $resultado = $conexion->query($sql);
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Listado de Actividades</title>
     <link rel="stylesheet" href="/Administrador_IFTS/assets/css/estilo.css">
 </head>
+
 <body>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/header.php"); ?>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/sidebar.php"); ?>
 
     <main class="contenido">
         <h1>Listado de actividades</h1>
-        
-        <p style="text-align: right; margin-bottom: 15px;">
-            <a href="/Administrador_IFTS/reportes/generar_pdf_actividades.php" class="boton">🧾 Exportar a PDF</a>
-        </p>
 
-        <?php if ($esAdmin): ?>
-            <p><a href="/Administrador_IFTS/crud_actividades/alta.php" class="boton">➕ Agregar nueva actividad</a></p>
-        <?php endif; ?>
+        <p style="text-align: right; margin-bottom: 15px;">
+            <?php if ($esAdmin): ?>
+                <a href="/Administrador_IFTS/crud_actividades/alta.php" class="boton">➕ Agregar nueva actividad</a>
+            <?php endif; ?>
+            <a href="/Administrador_IFTS/reportes/generar_pdf_actividades.php" class="boton">🧾 Exportar a PDF</a>
+            <a href="/Administrador_IFTS/reportes/exportar_excel_actividades.php" class="boton excel">📊 Exportar a Excel</a>
+        </p>
 
         <table class="tabla-crud">
             <thead>
@@ -86,4 +88,5 @@ $resultado = $conexion->query($sql);
 
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/Administrador_IFTS/includes/footer.php"); ?>
 </body>
+
 </html>

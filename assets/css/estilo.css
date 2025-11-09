@@ -17,52 +17,71 @@ body {
 /* =========================================================
    HEADER PRINCIPAL
    ========================================================= */
-header,
+
 .header {
   background-color: #1d3557;
   color: #fff;
-  padding: 12px 0;
   border-bottom: 3px solid #457b9d;
+  padding: 12px 0;
+  position: relative;
 }
 
-header .container,
-.header .container {
-  width: 90%;
-  margin: auto;
+/* contenedor principal del header */
+.header-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: relative;
+
+  /* 🧭 Alinea con el contenido principal (que empieza después del sidebar) */
+  margin-left: 250px;  /* ancho del sidebar */
+  padding-right: 25px; /* leve ajuste para igualar el margen interno del contenido */
 }
 
-header h1,
-.header h1 {
-  margin: 0;
-  font-size: 1.5em;
+/* título centrado */
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-nav a {
+.header-center h1 {
+  font-size: 1.6rem;
+  margin: 0;
   color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
 }
 
-nav a:hover,
-nav a.activo {
-  background-color: #2563eb;
+/* bloque usuario */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
+
+.header-right span {
+  color: #fff;
+}
+
+/* botón cerrar sesión */
+.logout {
+  background-color: #009639; /* verde GCBA */
+  color: #fff !important;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.logout:hover {
+  background-color: #007a56;
+  transform: scale(1.05);
+}
+
+
 
 /* =========================================================
    SIDEBAR / MENÚ LATERAL
@@ -134,10 +153,11 @@ aside ul li a:hover {
 
 .tabla-crud {
   width: 100%;
-  min-width: 1100px; /* fuerza un ancho mínimo mayor */
+  min-width: 1100px;
+  /* fuerza un ancho mínimo mayor */
   border-collapse: collapse;
   background-color: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
@@ -151,7 +171,8 @@ aside ul li a:hover {
 .tabla-crud th {
   background-color: #1d3557;
   color: #fff;
-  text-align: center; /* 🔹 centrado horizontal */
+  text-align: center;
+  /* 🔹 centrado horizontal */
 }
 
 
@@ -201,6 +222,14 @@ aside ul li a:hover {
 
 .accion.eliminar:hover {
   color: red;
+}
+
+.boton.excel {
+  background-color: #107c41;
+}
+
+.boton.excel:hover {
+  background-color: #0b5c2f;
 }
 
 /* =========================================================
@@ -374,4 +403,91 @@ canvas {
   .grafico-box h2 {
     font-size: 1.05em;
   }
+}
+
+/* =========================================================
+   PÁGINA DE INICIO
+   ========================================================= */
+
+.inicio {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo-principal {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.intro-texto {
+  width: 50%;
+  margin: 0 auto;
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.intro-imagen {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.intro-imagen img {
+  max-width: 45%;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.usuario-actual {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 900px) {
+  .intro-texto {
+    width: 85%;
+  }
+
+  .intro-imagen img {
+    max-width: 70%;
+  }
+}
+
+
+
+/* =========================================================
+   USER INFO EN EL HEADER
+   ========================================================= */
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* 🔹 alinea todo a la izquierda */
+  gap: 15px;
+  margin-left: 20px;
+  /* 🔹 separa un poco del borde */
+}
+
+.user-info span {
+  color: #fff;
+  font-weight: 500;
+}
+
+.logout {
+  background-color: #0d575f;
+  /* rojo intenso */
+  color: #fff !important;
+  padding: 6px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.logout:hover {
+  background-color: #c1121f;
+  transform: scale(1.05);
 }
